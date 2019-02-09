@@ -46,7 +46,7 @@ def http_post2():
     #req = request.Request(url+params)  # GET方法
     page = request.urlopen(req).read()
     page = page.decode('utf-8')
-    print(page)
+#    print(page)
  
 
 
