@@ -30,7 +30,7 @@ def http_post():
 
 def http_post2():
     url = "https://maker.ifttt.com/trigger/uuu/with/key/py1yJDLJz7zXczrGiBNZ-"
-    data = {"value1":"smith","value2":"join","value3":"123456"}
+    data = {"value1":"smith2","value2":"join3","value3":"123456"}
     params="?"
 #    for key in data:
 #        params = params + key + "=" + data[key] + "&"
