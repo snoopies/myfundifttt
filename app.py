@@ -4,9 +4,10 @@ import requests
 import io
 import sys
 import json
-#from flask import request
-from urllib import request
-from urllib import parse
+import urllib.request, urllib.parse, urllib.response
+from flask import request
+#from urllib import request
+#from urllib import parse
 from flask import Flask
 from datetime import datetime
 app = Flask(__name__)
@@ -45,10 +46,10 @@ def http_post2():
         'Referer':'http://10.1.2.151/',
         'User-Agent':'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.23 Mobile Safari/537.36'
     }
-    data = parse.urlencode(data).encode('utf-8')
-    req = request.Request(url, headers=headers, data=data)  #POST方法
-    #req = request.Request(url+params)  # GET方法
-    page = request.urlopen(req).read()
+    data = urllib.parse.urlencode(data).encode('utf-8')
+    req = urllib.request.Request(url, headers=headers, data=data)  #POST方法
+    #req = urllib.request.Request(url+params)  # GET方法
+    page = urllib.request.urlopen(req).read()
     page = page.decode('utf-8')
 #    print(page)
  
