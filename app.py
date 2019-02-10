@@ -5,10 +5,10 @@ import io
 import sys
 import json
 import urllib.request, urllib.parse, urllib.response
-from flask import request
+from flask import Flask
+import flask.request
 #from urllib import request
 #from urllib import parse
-from flask.request import Flask
 from datetime import datetime
 app = Flask(__name__)
     
