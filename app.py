@@ -79,7 +79,7 @@ def get_fund():
 
 @app.route('/')
 def homepage():
-    return """{time}""".format(time=request.args)
+    return """{time}""".format(time=request.args.get("name"))
 #    for arg in request.args:
 #        print(arg)
 #    http_post2()
