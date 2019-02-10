@@ -4,6 +4,7 @@ import requests
 import io
 import sys
 import json
+#from flask import request
 from urllib import request
 from urllib import parse
 from flask import Flask
@@ -77,6 +78,8 @@ def get_fund():
 
 @app.route('/')
 def homepage():
+    for arg in request.args:
+        print(arg)
     http_post2()
     the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
 
