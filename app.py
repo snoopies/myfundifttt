@@ -6,7 +6,7 @@ import sys
 import json
 import urllib.request, urllib.parse, urllib.response
 from flask import Flask
-import flask.request
+from flask import request
 #from urllib import request
 #from urllib import parse
 from datetime import datetime
@@ -84,7 +84,7 @@ def homepage():
     http_post2()
 #    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
 
-    return """{time}""".format(time=flask.request.args.get("name"))
+    return """{time}""".format(time=Flask.request.args.get("name"))
 #    return """
 #    <h1>Hello heroku</h1>
 #    <p>It is currently {time}.</p>
