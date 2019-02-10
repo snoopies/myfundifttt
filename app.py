@@ -79,12 +79,12 @@ def get_fund():
 
 @app.route('/')
 def homepage():
-    for arg in request.args:
-        print(arg)
-    http_post2()
-    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
+    return request.args
+#    for arg in request.args:
+#        print(arg)
+#    http_post2()
+#    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
 
-     return request.args
 #    return """
 #    <h1>Hello heroku</h1>
 #    <p>It is currently {time}.</p>
