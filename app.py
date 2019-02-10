@@ -8,7 +8,7 @@ import urllib.request, urllib.parse, urllib.response
 from flask import request
 #from urllib import request
 #from urllib import parse
-from flask import Flask
+from flask.request import Flask
 from datetime import datetime
 app = Flask(__name__)
     
