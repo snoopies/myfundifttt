@@ -19,7 +19,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 
 def http_post():
     url='https://maker.ifttt.com/trigger/uuu/with/key/py1yJDLJz7zXczrGiBNZ-'
-    values ={ "value1" : "smith", "value2" : "join", "value3" : "123456" }
+    values ={ "value1" : "smith1", "value2" : "join2", "value3" : "123456" }
 
     jdata = json.dumps(values)             # 对数据进行JSON格式化编码
     req = urllib.request(url, jdata)       # 生成页面请求的完整数据
