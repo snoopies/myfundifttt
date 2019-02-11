@@ -85,7 +85,9 @@ def homepage():
 #        print(arg)
     if request.args.get("fundscode") == None:
         return "OK!"
-    http_post2({"value1":"smith","value2":"join","value3":"123456"})
+    aaa=request.args.get("fundscode").split(",")
+    return aaa[0]
+#    http_post2({"value1":"smith","value2":"join","value3":"123456"})
 #    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
 
     return """{time}""".format(time=request.args.get("fundscode"))
