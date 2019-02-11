@@ -1,6 +1,6 @@
 ﻿#coding=utf-8
 from bs4 import BeautifulSoup
-#import requests
+import requests
 import io
 import sys
 import json
@@ -19,7 +19,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 
 def http_post():
     url='https://maker.ifttt.com/trigger/uuu/with/key/py1yJDLJz7zXczrGiBNZ-'
-    values ={ "value1" : "smith", "value2" : "join", "value3" : "123456" }
+    values ={ "value1" : "smith1", "value2" : "join2", "value3" : "123456" }
 
     jdata = json.dumps(values)             # 对数据进行JSON格式化编码
     req = urllib.request(url, jdata)       # 生成页面请求的完整数据
@@ -28,9 +28,9 @@ def http_post():
     return response.read()                    # 获取服务器返回的页面信息
 
 
-def http_post2(post_data):
+def http_post2():
     url = "https://maker.ifttt.com/trigger/uuu/with/key/py1yJDLJz7zXczrGiBNZ-"
-    data = post_data
+    data = {"value1":"smith2","value2":"join3","value3":"123456"}
     params="?"
 #    for key in data:
 #        params = params + key + "=" + data[key] + "&"
@@ -59,11 +59,8 @@ def http_post2(post_data):
 def get_fund():
     #使用requests抓取页面内容，并将响应赋值给page变量
     #html = requests.get('http://quotes.money.163.com//fund/jzzs_150165.html')
-    #html = requests.get('http://quotes.money.163.com/fund/270014.html')
-    req = urllib.request.Request('http://quotes.money.163.com/fund/270014.html')  # GET方法
-    html = urllib.request.urlopen(req).read()
-    html = html.decode('utf-8')
-   
+    html = requests.get('http://quotes.money.163.com/fund/270014.html')
+ 
     #使用content属性获取页面的源页面
     #使用BeautifulSoap解析，吧内容传递到BeautifulSoap类
     soup = BeautifulSoup(html.content,'lxml',from_encoding='utf-8')
@@ -84,7 +81,7 @@ def get_fund():
 def homepage():
 #    for arg in request.args:
 #        print(arg)
-    http_post2({"value1":"smith","value2":"join","value3":"123456"})
+    http_post2()
 #    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
 
     return """{time}""".format(time=request.args.get("name"))
