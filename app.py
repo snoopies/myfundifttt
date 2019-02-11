@@ -83,6 +83,8 @@ def get_fund():
 def homepage():
 #    for arg in request.args:
 #        print(arg)
+    if request.args.get("fundscode") == None:
+        return "OK!"
     http_post2({"value1":"smith","value2":"join","value3":"123456"})
 #    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
 
@@ -93,5 +95,4 @@ def homepage():
 #    """.format(time=the_time)
 
 if __name__ == '__main__':
-    get_fund()
     app.run(debug=True, use_reloader=True)
