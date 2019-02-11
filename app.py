@@ -88,7 +88,7 @@ def homepage():
     http_post2({"value1":"smith","value2":"join","value3":"123456"})
 #    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
 
-    return """{time}""".format(time=request.args.get("name"))
+    return """{time}""".format(time=request.args.get("fundscode"))
 #    return """
 #    <h1>Hello heroku</h1>
 #    <p>It is currently {time}.</p>
