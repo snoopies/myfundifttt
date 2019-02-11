@@ -86,6 +86,7 @@ def homepage():
     if request.args.get("fundscode") == None:
         return "OK!"
     funds=request.args.get("fundscode").split(",")
+    aaa = ""
     for fund in funds:
         aaa = aaa + fund
     return aaa
