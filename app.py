@@ -80,7 +80,7 @@ def get_fund(fundcode):
     data={}
     data["value1"]="fundname"
     data["value2"]="1.23"
-    data["value3"]="3.10%"
+    data["value3"]="3.12%"
     return data
 
 
