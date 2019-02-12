@@ -56,11 +56,11 @@ def http_post2(post_data):
 
 
 
-def get_fund(fundcode):
+def get_fund():
     #使用requests抓取页面内容，并将响应赋值给page变量
     #html = requests.get('http://quotes.money.163.com//fund/jzzs_150165.html')
     #html = requests.get('http://quotes.money.163.com/fund/270014.html')
-    req = """http://quotes.money.163.com/fund/{code}.html""".format(code=fundcode)  # GET方法
+    req = 'http://quotes.money.163.com/fund/270014.html'  # GET方法
     html = urllib.request.urlopen(req)
    
     #使用content属性获取页面的源页面
@@ -77,37 +77,27 @@ def get_fund(fundcode):
        #print(tr)
        for td in tr.find_all('td'):
            print(td.get_text())
-    data={}
-    data["value1"]="fundname"
-    data["value2"]="1.23"
-    data["value3"]="3.10%"
-    return data
 
 
 @app.route('/')
 def homepage():
-    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
-    return """
-    <h1>Hello heroku</h1>
-    <p>It is currently {time}.</p>
-    """.format(time=the_time)
-
 #    for arg in request.args:
 #        print(arg)
-#    return """{time}""".format(time=request.args.get("fundscode"))
-
-@app.route('/funds')
     if request.args.get("fundscode") == None:
-        return "Error Request!"
+        return "OK!"
     funds=request.args.get("fundscode").split(",")
+    aaa = ""
     for fund in funds:
-        data = get_fund(fund)
-        http_post2(data)
-#        http_post2({"value1":"smith","value2":"join","value3":"123456"})
-    return "OK!"
+        aaa = aaa + fund
+    return aaa
+#    http_post2({"value1":"smith","value2":"join","value3":"123456"})
+#    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
 
-
-
+    return """{time}""".format(time=request.args.get("fundscode"))
+#    return """
+#    <h1>Hello heroku</h1>
+#    <p>It is currently {time}.</p>
+#    """.format(time=the_time)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
