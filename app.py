@@ -101,6 +101,7 @@ def funds():
     if request.args.get("fundscode") == None:
         return "Error Request!"
     funds=request.args.get("fundscode").split(",")
+    return funds
     for fund in funds:
         data = get_fund(fund)
         http_post2(data)
