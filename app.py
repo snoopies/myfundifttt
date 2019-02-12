@@ -81,7 +81,7 @@ def get_fund(fundcode):
     data["value1"]="fundname"
     data["value2"]="1.23"
     data["value3"]="3.10%"
-    return str(data)
+    return data
 
 
 @app.route('/')
@@ -104,9 +104,9 @@ def funds():
     data = ""
     for fund in funds:
         data = data + get_fund(fund)
-#        http_post2(data)
+        http_post2(data)
 #        http_post2({"value1":"smith","value2":"join","value3":"123456"})
-    return data
+    return "data"
 
 
 
