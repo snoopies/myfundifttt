@@ -61,7 +61,6 @@ def get_fund(fundcode):
     #html = requests.get('http://quotes.money.163.com//fund/jzzs_150165.html')
     #html = requests.get('http://quotes.money.163.com/fund/270014.html')
     req = """http://quotes.money.163.com/fund/{code}.html""".format(code=fundcode)  # GET方法
-    return req
     html = urllib.request.urlopen(req)
    
     #使用content属性获取页面的源页面
