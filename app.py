@@ -103,8 +103,8 @@ def funds():
     funds=request.args.get("fundscode").split(",")
     for fund in funds:
         data = get_fund(fund)
-#        http_post2(data)
-        http_post2({"value1":"smith","value2":"join","value3":"123456"})
+        http_post2(data)
+#        http_post2({"value1":"smith","value2":"join","value3":"123456"})
     return "data"
 
 
