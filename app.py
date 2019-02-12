@@ -102,9 +102,9 @@ def funds():
     if request.args.get("fundscode") == None:
         return "Error Request!"
     funds=request.args.get("fundscode").split(",")
+    data = ""
     for fund in funds:
-        data = get_fund(fund)
-        return data
+        data = data + get_fund(fund)
         http_post2(data)
 #        http_post2({"value1":"smith","value2":"join","value3":"123456"})
     return "OK!"
