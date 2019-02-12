@@ -78,7 +78,7 @@ def get_fund(fundcode):
        for td in tr.find_all('td'):
            print(td.get_text())
     data={}
-    data["value1"]="fundname"
+    data["value1"]="fundname1"
     data["value2"]="1.23"
     data["value3"]="3.12%"
     return data
