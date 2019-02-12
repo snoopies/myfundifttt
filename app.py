@@ -97,6 +97,7 @@ def homepage():
 #    return """{time}""".format(time=request.args.get("fundscode"))
 
 @app.route('/funds')
+def funds():
     if request.args.get("fundscode") == None:
         return "Error Request!"
     funds=request.args.get("fundscode").split(",")
