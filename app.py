@@ -107,7 +107,7 @@ def funds():
         data = data + get_fund(fund)
 #        http_post2(data)
 #        http_post2({"value1":"smith","value2":"join","value3":"123456"})
-    return "OK!"
+    return data
 
 
 
