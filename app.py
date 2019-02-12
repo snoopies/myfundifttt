@@ -81,7 +81,7 @@ def get_fund(fundcode):
     data["value1"]="fundname"
     data["value2"]="1.23"
     data["value3"]="3.10%"
-    return data
+    return str(data)
 
 
 @app.route('/')
