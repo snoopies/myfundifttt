@@ -80,7 +80,7 @@ def get_fund(fundcode):
         soup = BeautifulSoup(html,'lxml',from_encoding='utf-8')
         #我是分隔符，下面就是select（）方法咯~
         table = soup.find_all('table',class_='fn_cm_table')[0]
-        #links = soup.select('div > a > div >span')
+        #links = soup.select('body > div.fn_wrap > div.fn_data_title > div.fn_data_trend > div.fn_data_trend_total')
         #for link in links:
         #    print(link.get_text())
         #tab = table.find_all('tbody')[0]
