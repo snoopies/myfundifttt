@@ -75,7 +75,7 @@ def get_fund(fundcode):
         data={}
         data["value1"] = fundcode
         data["value2"] = soup.body.select('div.fn_data_trend>div')[0].select('big')[0].next_element
-        data["value3"] = soup.body.select('div.fn_data_trend>div')[0].select('big')[1].next_element
+        data["value3"] = soup.body.select('div.fn_data_trend>div')[0].select('big')[0].next_element
         return data
         #我是分隔符，下面就是select（）方法咯~
         #table = soup.find_all('table',class_='fn_cm_table')[0]
