@@ -47,11 +47,17 @@ def http_post2(post_data):
         'User-Agent':'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.23 Mobile Safari/537.36'
     }
     data = urllib.parse.urlencode(data).encode('utf-8')
-    req = urllib.request.Request(url, headers=headers, data=data)  #POST方法
-    #req = urllib.request.Request(url+params)  # GET方法
-    page = urllib.request.urlopen(req).read()
-    page = page.decode('utf-8')
-#    print(page)
+    try:
+        req = urllib.request.Request(url, headers=headers, data=data)  #POST方法
+        #req = urllib.request.Request(url+params)  # GET方法
+    except urllib2.HTTPError,e:
+        print e.code
+    except urllib2.URLError,e:
+        print e.reason
+    else:
+        page = urllib.request.urlopen(req).read()
+        page = page.decode('utf-8')
+        #    print(page)
  
 
 
