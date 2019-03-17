@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import io
 import sys
 import json
-import urllib.request, urllib.parse, urllib.response
+import urllib.request, urllib.parse, urllib.response, urllib.error
 from flask import Flask
 from flask import request
 #from urllib import request
@@ -50,15 +50,14 @@ def http_post2(post_data):
     try:
         req = urllib.request.Request(url, headers=headers, data=data)  #POST方法
         #req = urllib.request.Request(url+params)  # GET方法
-    except urllib2.HTTPError,e:
-        print e.code
-    except urllib2.URLError,e:
-        print e.reason
-    else:
         page = urllib.request.urlopen(req).read()
         page = page.decode('utf-8')
         #    print(page)
- 
+    except error.HTTPError as error:    # HTTP错误
+        print('HTTPError')
+        print('ErrorCode: %s' % error.code)
+    except error.URLError as error:     # URL错误
+        print(error.reason)
 
 
 
@@ -70,11 +69,6 @@ def get_fund(fundcode):
     try:
         #urllib2.urlopen(req)
         html = urllib.request.urlopen(req)
-    except urllib2.HTTPError,e:
-        print e.code
-    except urllib2.URLError,e:
-        print e.reason
-    else:
         #使用content属性获取页面的源页面
         #使用BeautifulSoap解析，吧内容传递到BeautifulSoap类
         soup = BeautifulSoup(html,'lxml',from_encoding='utf-8')
@@ -94,6 +88,12 @@ def get_fund(fundcode):
            #print(tr)
            #for td in tr.find_all('td'):
                #print(td.get_text())
+    except error.HTTPError as error:    # HTTP错误
+        print('HTTPError')
+        print('ErrorCode: %s' % error.code)
+    except error.URLError as error:     # URL错误
+        print(error.reason)
+
     
 
 @app.route('/')
