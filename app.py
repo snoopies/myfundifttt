@@ -61,28 +61,34 @@ def get_fund(fundcode):
     #html = requests.get('http://quotes.money.163.com//fund/jzzs_150165.html')
     #html = requests.get('http://quotes.money.163.com/fund/270014.html')
     req = """http://quotes.money.163.com/fund/{code}.html""".format(code=fundcode)  # GET方法
-    html = urllib.request.urlopen(req)
-   
-    #使用content属性获取页面的源页面
-    #使用BeautifulSoap解析，吧内容传递到BeautifulSoap类
-    soup = BeautifulSoup(html,'lxml',from_encoding='utf-8')
-    #我是分隔符，下面就是select（）方法咯~
-    table = soup.find_all('table',class_='fn_cm_table')[0]
-    #links = soup.select('div > a > div >span')
-    #for link in links:
-    #    print(link.get_text())
-    #tab = table.find_all('tbody')[0]
-    #print(tab)
-    for tr in table.find_all('tr'):
-       #print(tr)
-       for td in tr.find_all('td'):
-           print(td.get_text())
-    data={}
-    data["value1"]="fundname1"
-    data["value2"]="1.23"
-    data["value3"]="3.12%"
-    return data
-
+    try:
+        #urllib2.urlopen(req)
+        html = urllib.request.urlopen(req)
+    except urllib2.HTTPError,e:
+        print e.code
+    except urllib2.URLError,e:
+        print e.reason
+    else:
+        #使用content属性获取页面的源页面
+        #使用BeautifulSoap解析，吧内容传递到BeautifulSoap类
+        soup = BeautifulSoup(html,'lxml',from_encoding='utf-8')
+        #我是分隔符，下面就是select（）方法咯~
+        table = soup.find_all('table',class_='fn_cm_table')[0]
+        #links = soup.select('div > a > div >span')
+        #for link in links:
+        #    print(link.get_text())
+        #tab = table.find_all('tbody')[0]
+        #print(tab)
+        for tr in table.find_all('tr'):
+           #print(tr)
+           for td in tr.find_all('td'):
+               print(td.get_text())
+        data={}
+        data["value1"]="fundname1"
+        data["value2"]="1.23"
+        data["value3"]="3.12%"
+        return data
+    
 
 @app.route('/')
 def homepage():
