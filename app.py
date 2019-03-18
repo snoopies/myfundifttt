@@ -124,7 +124,7 @@ def funds():
     for fund in funds:
         for i in range(1,3):
             data = get_fund(fund)
-            if data != None:
+            if data is None:
                 break
         for j in range(1,3):
             if http_post2(data) is True:
