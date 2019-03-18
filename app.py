@@ -29,6 +29,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 
 
 def http_post2(post_data):
+    return_var = True
     url = "https://maker.ifttt.com/trigger/uuu/with/key/py1yJDLJz7zXczrGiBNZ-"
     data = post_data
     params="?"
@@ -53,15 +54,19 @@ def http_post2(post_data):
         page = urllib.request.urlopen(req).read()
         page = page.decode('utf-8')
         #    print(page)
+        return_var = True
     except error.HTTPError as error:    # HTTP错误
         print('HTTPError')
         print('ErrorCode: %s' % error.code)
+        return_var = False
     except error.URLError as error:     # URL错误
         print(error.reason)
-
+        return_var = False
+    return return_var
 
 
 def get_fund(fundcode):
+    return_var = None
     #使用requests抓取页面内容，并将响应赋值给page变量
     #html = requests.get('http://quotes.money.163.com//fund/jzzs_150165.html')
     #html = requests.get('http://quotes.money.163.com/fund/270014.html')
@@ -76,7 +81,7 @@ def get_fund(fundcode):
         data["value1"] = fundcode
         data["value2"] = soup.body.select('div.fn_data_trend>div')[0].select('big')[0].next_element
         data["value3"] = soup.body.select('div.fn_data_trend>div')[0].select('big')[0].next_element
-        return data
+        return_var = data
         #我是分隔符，下面就是select（）方法咯~
         #table = soup.find_all('table',class_='fn_cm_table')[0]
         #links = soup.select('body > div.fn_wrap > div.fn_data_title > div.fn_data_trend > div.fn_data_trend_total')
@@ -91,8 +96,11 @@ def get_fund(fundcode):
     except error.HTTPError as error:    # HTTP错误
         print('HTTPError')
         print('ErrorCode: %s' % error.code)
+        return_var = None
     except error.URLError as error:     # URL错误
         print(error.reason)
+        return_var = None
+    return return_var
 
     
 
@@ -114,8 +122,13 @@ def funds():
         return "Error Request!"
     funds=request.args.get("fundscode").split(",")
     for fund in funds:
-        data = get_fund(fund)
-        http_post2(data)
+        for i in range(1,3):
+            data = get_fund(fund)
+            if data != None:
+                break
+        for j in range(1,3)
+            if http_post2(data) is True
+                break
 #        http_post2({"value1":"smith","value2":"join","value3":"123456"})
     return "data"
 
