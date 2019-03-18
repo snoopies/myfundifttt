@@ -56,11 +56,11 @@ def http_post2(post_data):
         #    print(page)
         return_var = True
     except error.HTTPError as error:    # HTTP错误
-        print('HTTPError')
-        print('ErrorCode: %s' % error.code)
+        #print('HTTPError')
+        #print('ErrorCode: %s' % error.code)
         return_var = False
     except error.URLError as error:     # URL错误
-        print(error.reason)
+        #print(error.reason)
         return_var = False
     return return_var
 
@@ -94,11 +94,11 @@ def get_fund(fundcode):
            #for td in tr.find_all('td'):
                #print(td.get_text())
     except error.HTTPError as error:    # HTTP错误
-        print('HTTPError')
-        print('ErrorCode: %s' % error.code)
+        #print('HTTPError')
+        #print('ErrorCode: %s' % error.code)
         return_var = None
     except error.URLError as error:     # URL错误
-        print(error.reason)
+        #print(error.reason)
         return_var = None
     return return_var
 
