@@ -126,7 +126,7 @@ def funds():
             data = get_fund(fund)
             if data != None:
                 break
-        for j in range(1,3)：
+        for j in range(1,3):
             if http_post2(data) is True
                 break
 #        http_post2({"value1":"smith","value2":"join","value3":"123456"})
