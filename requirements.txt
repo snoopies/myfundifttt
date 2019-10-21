@@ -31,5 +31,5 @@ soupsieve==1.7.3
 str==0.1
 tornado==5.1.1
 urllib3==1.24.1
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 wsproto==0.11.0
